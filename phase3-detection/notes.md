@@ -8,7 +8,7 @@
 
 \- Dashboard: https://192.168.56.101
 
-\- Agent: kali-attacker (ID: 001) — Active
+\- Agent: Kali-attacker (ID: 001) — Active
 
 
 
@@ -18,33 +18,45 @@
 
 |---|---|---|---|---|
 
-| 01 | Nmap Recon | Port scan detected | 533 | 7 |
+| 01 | Nmap Recon | Host-based anomaly detection | 510 | 7 |
 
-| 02 | vsftpd Exploit | Coming soon | - | - |
+| 02 | Samba Exploit | Successful sudo to ROOT | 5402 | 3 |
 
-| 03 | Hydra Brute Force | Coming soon | - | - |
+| 03 | Hydra Brute Force | PAM login events | 5501 | 3 |
 
 
 
 \## MITRE ATT\&CK Coverage
 
-| Technique | ID | Status |
+| Technique | ID | Detected |
 
 |---|---|---|
 
-| Network Service Discovery | T1046 | ✅ Detected |
+| Network Service Discovery | T1046 | ✅ |
 
-| Exploit Public App | T1190 | 🔄 Planned |
+| Exploit Public-Facing App | T1190 | ✅ |
 
-| Brute Force | T1110 | 🔄 Planned |
+| Brute Force | T1110.001 | ✅ |
+
+
+
+\## Detection Gaps
+
+\- Metasploitable has no Wazuh agent — victim-side logs not captured
+
+\- Full detection chain requires agent on target machine
+
+\- Phase 4 Windows VMs will have agents installed for complete coverage
 
 
 
 \## Key Observations
 
-\- Wazuh requires minimum 4GB RAM to run stable
+\- Wazuh needs minimum 4GB RAM to run stable
 
 \- Agent must be restarted after Wazuh server restart
 
-\- Rule level 7+ = medium severity, worth investigating
+\- Rule level 7+ = medium severity, investigate immediately
+
+\- Rule level 10+ = high severity, immediate response required
 
